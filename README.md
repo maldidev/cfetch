@@ -16,12 +16,12 @@ $ clang cfetch.c
 ```
 if you not have clang:
 ```bash
-# Debian, debian-based:
-    sudo apt install clang
-# Arch Linux, arch-based:
-    sudo pacman -S clang
-# BSD-Systems:
-    zypper install clang
+Debian, debian-based:
+    $ sudo apt install clang
+Arch Linux, arch-based:
+    $ sudo pacman -S clang
+BSD-Systems:
+    $ zypper install clang
 ```
 
 third one: rename "a.out" to "cfetch"; moving to executable from shell
