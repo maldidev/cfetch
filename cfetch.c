@@ -14,10 +14,9 @@
 #define BGRD "\x1b[0m" // Red background
 #define BGBL "\x1b[0m" // Blue Background
 #define SEPARATOR "~ "
-//#define OSNAME "XIU" //XNU MENTIONED // X Is UNIX
 const char osname[] = get_kernel;
 
-void srb_linux(void) {
+void linux_fetch(void) {
     printf(
         BGRD RED   " ∆ ∆ " RESET RED " kakaha" RESET BLUE "C" RESET WHITE "32 " RESET "Fetch " VERSION "\n"
         BGRD RED   "(>.<)" RESET  " kern " SEPARATOR get_kernel " " get_kernel_ver "\n"
@@ -25,29 +24,11 @@ void srb_linux(void) {
         BGBL BLUE  "     " RESET  " host " SEPARATOR get_hostname "\n\n"
     );
 }
-void srb_unknown() {
-    printf(
-        RED " ## " RESET RED "S" RESET BLUE "R" RESET WHITE "B" RESET "Fetch" VERSION "\n"
-        RED "#  #" RESET "OS " SEPARATOR get_kernel "\n"
-        BLUE "  # " RESET "Kernel " SEPARATOR get_kernel " " get_kernel_ver "\n"
-        BLUE "  # " RESET "Shell " SEPARATOR get_shell "\n"
-        "    Hostname " SEPARATOR get_hostname "\n"
-        WHITE "  # " RESET "\n"
-    );
+int main() {
+            if(strcmp(osname, "Linux")   == 0)   { linux_fetch();   }
+            //else if(strcmp(osname, "OpenBSD") == 0)   { srb_openbsd(); }
+            //else if(strcmp(osname, "NetBSD")  == 0)   { srb_netbsd();  }
+            //else if(strcmp(osname, "FreeBSD") == 0)   { srb_freebsd(); }
+            //else { srb_unknown(); }
+            else { printf("Your OS is not supported!\n"); return 1; }
 }
-void srb_openbsd();
-void srb_netbsd() {
-    printf(
-        "*" BGRD RED "###### " RESET RED " S" RESET BLUE "R" RESET WHITE "B" RESET "Fetch " VERSION "\n"
-        "*" BGBL BLUE "###### " RESET " OS " SEPARATOR "SRB_BSD\n"
-        "*" BGWH WHITE "###### " RESET " Kernel " SEPARATOR get_kernel " " get_kernel_ver "\n"
-        "*" "        Shell " SEPARATOR get_shell "\n"
-        "*" "        Hostname " SEPARATOR get_hostname "\n" ); }
-        void srb_freebsd();
-        int main() {
-            if(strcmp(osname, "Linux")   == 0)   { srb_linux();   }
-            else if(strcmp(osname, "OpenBSD") == 0)   { srb_openbsd(); }
-            else if(strcmp(osname, "NetBSD")  == 0)   { srb_netbsd();  }
-            else if(strcmp(osname, "FreeBSD") == 0)   { srb_freebsd(); }
-            else { srb_unknown(); }
-        }
